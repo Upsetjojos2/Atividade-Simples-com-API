@@ -1,91 +1,98 @@
-# My_project
+# Projeto GitHub API - Atividades
 
-Visão geral
------------
+Este projeto utiliza a API do GitHub para extrair e processar informações sobre usuários, repositórios e seguidores.
 
-Projeto simples contendo um notebook com atividades e um script de exemplo que consulta a API do GitHub.
+## 📋 Descrição
 
-Principais arquivos
--------------------
+O projeto utiliza a API GitHub para extrair repositórios e seguidores de um usuário com paginação.
 
-- [Atividades.ipynb](Atividades.ipynb) — notebook principal com as atividades.
-- [Atividade.py](Atividade.py) — script de exemplo que busca dados de usuário do GitHub.
-- [README.md](README.md) — este arquivo.
+## 🚀 Como Executar
 
-Requisitos
-----------
+### Pré-requisitos
+- Python 3.7+
+- Biblioteca `requests`
 
-- Python 3.8+
-- `pip`
+### Instalação
 
-Instalação rápida
------------------
-
-Crie um ambiente virtual e instale dependências (se houver):
-
+1. Clone o repositório:
 ```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install --upgrade pip
-pip install -r requirements.txt  # se existir
+git clone <seu-repositorio>
+cd My_project
 ```
 
-Como executar
--------------
-
-Abra o notebook:
-
+2. Crie um ambiente virtual:
 ```bash
-pip install jupyterlab
-jupyter lab
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# ou
+venv\Scripts\activate  # Windows
 ```
 
-Execute o script de exemplo:
-
+3. Instale as dependências:
 ```bash
-python Atividade.py
+pip install requests
 ```
 
-Estrutura do repositório
-------------------------
+### Executar o Projeto
 
-- Atividades.ipynb
-- Atividade.py
-- README.md
-
-Contribuições
--------------
-
-- Faça fork e abra um Pull Request.
-- Formate o código e execute testes locais antes de enviar PRs (se houver testes).
-
-Comandos Git úteis
-------------------
-
+**Script principal:**
 ```bash
-# Verificar status
-git status
-
-# Verificar remotes
-git remote -v
-
-# Ver o último commit
-git log -1 --pretty=fuller
+python Atividade2.py
 ```
 
-Licença
--------
+**Notebook com análises:**
+```bash
+jupyter notebook Atividades.ipynb
+```
 
-Adicione um arquivo `LICENSE` com a licença desejada (por exemplo MIT). Posso adicionar uma licença se quiser.
+## 📝 Detalhes do Projeto
 
-Contato
--------
+### Funcionalidades Principais
+Busca repositórios e seguidores do usuário 'amzn':
+- Lista todos os repositórios com paginação (5 páginas)
+- Extrai dados de todos os seguidores usando `while True` com paginação dinâmica
+- Exibe o número total de seguidores coletados
 
-Abra uma issue para perguntas, pedidos de recurso ou reportar bugs.
+## 🔑 Autenticação
 
-Próximos passos que posso ajudar
--------------------------------
+O projeto utiliza um token de autenticação GitHub para aumentar os limites de requisições e acessar dados privados. O token é configurado nos headers das requisições:
 
-- Gerar `requirements.txt` a partir das importações detectadas.
-- Adicionar um `LICENSE` (por exemplo MIT).
-- Aceitar argumentos de linha de comando em `Atividade.py` para escolher o `username`.
+```python
+headers = {
+    'Authorization': 'Bearer <seu_token>',
+    'X-GitHub-Api-Version': '2022-11-28'
+}
+```
+
+**⚠️ Nota**: Não compartilhe tokens em repositórios públicos. Use variáveis de ambiente para dados sensíveis.
+
+## 🛠️ Tecnologias Utilizadas
+
+- **Python 3**
+- **Requests** - Biblioteca para requisições HTTP
+- **GitHub API v3** - API REST do GitHub
+- **Jupyter Notebook** - Para análise interativa
+
+## 📊 Estrutura do Projeto
+
+```
+My_project/
+├── Atividade2.py         # Script principal
+├── Atividades.ipynb      # Notebooks com código interativo
+├── README.md             # Este arquivo
+└── venv/                 # Ambiente virtual Python
+```
+
+## 🔗 Links Úteis
+
+- [Documentação GitHub API](https://docs.github.com/en/rest)
+- [Biblioteca Requests](https://docs.python-requests.org/)
+- [GitHub CLI](https://cli.github.com/)
+
+## 📄 Licença
+
+Este projeto é de uso educacional.
+
+---
+
+**Abgs**: Desenvolvido para fins de aprendizado com a API do GitHub
