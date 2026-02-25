@@ -8,11 +8,14 @@ api_base_url = 'https://api.github.com'
 owner = 'amzn'
 url = f'{api_base_url}/users/{owner}/repos'
 
-# Configurar token de acesso (use variável de ambiente)
+# Configurar token de acesso (usar variável de ambiente)
 import os
-access_token = os.getenv('GITHUB_TOKEN', 'seu_token_aqui')
-headers = {'Authorization': 'Bearer ' + access_token,
-           'X-GitHub-Api-Version': '2022-11-28'}
+access_token = os.getenv('GITHUB_TOKEN', '')
+if access_token:
+    headers = {'Authorization': 'Bearer ' + access_token,
+               'X-GitHub-Api-Version': '2022-11-28'}
+else:
+    headers = {'X-GitHub-Api-Version': '2022-11-28'}
 
 # Buscar repositórios por página
 repos_list = []
@@ -61,4 +64,4 @@ while True:
         break
 
 print(f'\nNúmero total de seguidores: {len(followers_list)}')
-
+print()
