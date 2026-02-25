@@ -8,8 +8,9 @@ api_base_url = 'https://api.github.com'
 owner = 'amzn'
 url = f'{api_base_url}/users/{owner}/repos'
 
-# Configurar token de acesso
-access_token = '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'
+# Configurar token de acesso (use variável de ambiente)
+import os
+access_token = os.getenv('GITHUB_TOKEN', 'seu_token_aqui')
 headers = {'Authorization': 'Bearer ' + access_token,
            'X-GitHub-Api-Version': '2022-11-28'}
 
@@ -60,3 +61,4 @@ while True:
         break
 
 print(f'\nNúmero total de seguidores: {len(followers_list)}')
+
